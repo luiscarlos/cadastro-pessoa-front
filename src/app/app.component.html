@@ -3,39 +3,72 @@
   <form [formGroup]="pessoaForm" (ngSubmit)="guardar()">
     <div class="form-group">
       <label>Nome</label>
-      <input type="text"  formControlName="nomePessoa" placeholder="Nome" class="form-control"> 
+      <input type="text" formControlName="nomePessoa" placeholder="Nome" class="form-control">
     </div>
     <div class="form-group">
       <label>CPF</label>
-      <input type="text"  formControlName="cpf" placeholder="CPF" class="form-control">
-    </div> 
+      <input type="text" formControlName="cpf" placeholder="CPF" class="form-control">
+    </div>
     <div class="form-group">
       <label>Idade</label>
-      <input type="number" formControlName="idade"  placeholder="Idade" class="form-control">
-    </div> 
+      <input type="number" formControlName="idade" placeholder="Idade" class="form-control">
+    </div>
+
+    <div class="form-group">
+      <label>Pais</label>
+      <select name="pais" id="pais" formControlName="pais" placeholder="Pais" class="form-control">
+        <option [ngValue]="item" *ngFor="let item of paises">{{item.nomePais}}</option>
+      </select>
+    </div>
 
     <div class="form-group">
       <label>Estado</label>
-      <select name="estado" id="estado" formControlName="estado"  placeholder="Pais" class="form-control">
-      <option value="item.id" *ngFor="let item of estado">{{item.nomeEstado}}</option>
-    </select>
-    </div> 
-   
-    <div class="form-group">
-      <label>Pais</label>
-      <select name="pais" id="pais" formControlName="pais"  placeholder="Pais" class="form-control" (change)="carregarEstadosPorPaisesId($event)">
-      <option [value]="item.id" *ngFor="let item of paises">{{item.nomePais}}</option>
-    </select>
-    </div> 
+      <select name="estado" id="estado" formControlName="estado" placeholder="Pais" class="form-control">
+        <option [ngValue]="item" *ngFor="let item of estados">{{item.nomeEstado}}</option>
+      </select>
+    </div>
 
-    
-
-    <button type="submit" class="btn btn-primary"   >Cadastrar</button>
-    <button type="submit" class="btn btn-secondary" >Cancelar</button>
-    <button type="submit" class="btn btn-danger"    >Remover</button>
-    <button type="submit" class="btn btn-warning"   >Alterar</button>
+    <button type="submit" class="btn btn-primary">Cadastrar</button>
+    <button type="submit" class="btn btn-secondary">Cancelar</button>
+    <button type="submit" class="btn btn-danger">Remover</button>
+    <button type="submit" class="btn btn-warning">Alterar</button>
 
   </form>
+</div>
+
+
+<div class="formularioRegistro">
+<h2>Pessoas registradas</h2>
+  <table class="table">
+    <thead>
+      <tr>
+        <th>#</th>
+        <th>Id</th>
+        <th>Nome</th>
+        <th>Idade</th>
+        <th>Pais</th>
+        <th>Estado</th>
+        <th>Selecionar</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let item of pessoas; index as i">
+        <td>{{i+1}}</td>
+        <td>{{item.id}}</td>
+        <td>{{item.nomePessoa}}</td>
+        <td>{{item.idade}}</td>
+        <td>{{item.pais.nomePais}}</td>
+        <td>{{item.estado.nomeEstado}}</td>
+        <td><button type="button" class="btn btn-danger">Excluir</button></td>
+        <td><button type="button" class="btn btn-warning">Editar</button></td>
+
+        
+
+   
+      </tr>
+    </tbody>
+
+  </table>
 </div>
 
 
