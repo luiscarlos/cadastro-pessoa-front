@@ -1,0 +1,24 @@
+.formularioRegistro {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh; /* Isso vai centralizar verticalmente na página inteira */
+  }
+  
+  .formularioRegistro h2 {
+    text-align: center;
+  }
+  
+  .form-group {
+    margin: 10px;
+    text-align: left;
+  }
+  
+  .form-control {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+  }

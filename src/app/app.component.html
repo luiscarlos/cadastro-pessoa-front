@@ -1,0 +1,43 @@
+<div class="formularioRegistro">
+  <h2>Formulario Pessoa</h2>
+  <form [formGroup]="pessoaForm" (ngSubmit)="guardar()">
+    <div class="form-group">
+      <label>Nome</label>
+      <input type="text"  formControlName="nomePessoa" placeholder="Nome" class="form-control"> 
+    </div>
+    <div class="form-group">
+      <label>CPF</label>
+      <input type="text"  formControlName="cpf" placeholder="CPF" class="form-control">
+    </div> 
+    <div class="form-group">
+      <label>Idade</label>
+      <input type="number" formControlName="idade"  placeholder="Idade" class="form-control">
+    </div> 
+
+    <div class="form-group">
+      <label>Estado</label>
+      <select name="estado" id="estado" formControlName="estado"  placeholder="Pais" class="form-control">
+      <option value="item.id" *ngFor="let item of estado">{{item.nomeEstado}}</option>
+    </select>
+    </div> 
+   
+    <div class="form-group">
+      <label>Pais</label>
+      <select name="pais" id="pais" formControlName="pais"  placeholder="Pais" class="form-control" (change)="carregarEstadosPorPaisesId($event)">
+      <option [value]="item.id" *ngFor="let item of paises">{{item.nomePais}}</option>
+    </select>
+    </div> 
+
+    
+
+    <button type="submit" class="btn btn-primary"   >Cadastrar</button>
+    <button type="submit" class="btn btn-secondary" >Cancelar</button>
+    <button type="submit" class="btn btn-danger"    >Remover</button>
+    <button type="submit" class="btn btn-warning"   >Alterar</button>
+
+  </form>
+</div>
+
+
+
+<router-outlet></router-outlet>
